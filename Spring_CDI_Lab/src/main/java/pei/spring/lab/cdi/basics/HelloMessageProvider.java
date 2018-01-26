@@ -1,4 +1,4 @@
-package pei.spring.lab.cdi.helloworld;
+package pei.spring.lab.cdi.basics;
 
 import lombok.NoArgsConstructor;
 

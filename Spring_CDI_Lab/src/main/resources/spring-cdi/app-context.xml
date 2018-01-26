@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="provider" class="pei.spring.lab.cdi.helloworld.HelloMessageProvider"/>
-    <bean id="renderer" class="pei.spring.lab.cdi.helloworld.StdOutMessageRenderer"
+    <bean id="provider" class="pei.spring.lab.cdi.basics.HelloMessageProvider"/>
+    <bean id="renderer" class="pei.spring.lab.cdi.basics.StdOutMessageRenderer"
         p:messageProvider-ref="provider"/>
 </beans>

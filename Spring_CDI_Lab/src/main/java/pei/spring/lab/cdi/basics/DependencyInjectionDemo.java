@@ -1,4 +1,4 @@
-package pei.spring.lab.cdi.helloworld;
+package pei.spring.lab.cdi.basics;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +9,7 @@ public class DependencyInjectionDemo {
 	
     public static void main(String... args) {
     	//
-    	new ClassPathXmlApplicationContext("cdi-helloworld/app-context.xml")
+    	new ClassPathXmlApplicationContext("spring-cdi/app-context.xml")
         .getBean("renderer", MessageRenderer.class)
         .render();
     	
@@ -18,21 +18,22 @@ public class DependencyInjectionDemo {
 		.getBean("renderer", MessageRenderer.class)
 		.render();
     }
+    
+    @Configuration
+    static class AppConfig {
+
+    	@Bean
+    	public MessageRenderer renderer(){
+    		MessageRenderer renderer = new StdErrMessageRenderer();
+    		renderer.setMessageProvider(provider());
+    		return renderer;
+    	}
+    	
+    	@Bean
+    	public MessageProvider provider() {
+    		return new HelloMessageProvider();
+    	}
+    }
 }
 
 
-@Configuration
-class AppConfig {
-
-	@Bean
-	public MessageRenderer renderer(){
-		MessageRenderer renderer = new StdErrMessageRenderer();
-		renderer.setMessageProvider(provider());
-		return renderer;
-	}
-	
-	@Bean
-	public MessageProvider provider() {
-		return new HelloMessageProvider();
-	}
-}
