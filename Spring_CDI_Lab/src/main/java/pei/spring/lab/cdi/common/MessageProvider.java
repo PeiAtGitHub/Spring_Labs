@@ -1,4 +1,4 @@
-package pei.spring.lab.cdi.basics;
+package pei.spring.lab.cdi.common;
 
 public interface MessageProvider {
     String getMessage();

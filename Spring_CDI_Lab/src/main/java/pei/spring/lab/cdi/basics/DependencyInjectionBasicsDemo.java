@@ -5,7 +5,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class DependencyInjectionDemo {
+import pei.spring.lab.cdi.common.HelloMessageProvider;
+import pei.spring.lab.cdi.common.MessageProvider;
+import pei.spring.lab.cdi.common.MessageRenderer;
+import pei.spring.lab.cdi.common.StdErrMessageRenderer;
+
+public class DependencyInjectionBasicsDemo {
 	
     public static void main(String... args) {
     	//

@@ -32,7 +32,7 @@ public class BeanAliasDemo {
 	}
 
 	@Test
-	public void testName() throws Exception {
+	public void testXmlConfigAlias() throws Exception {
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
 		ctx.load("classpath:spring-cdi/app-context-alias.xml");
 		ctx.refresh();
@@ -43,7 +43,7 @@ public class BeanAliasDemo {
 	}
 	
 	@Test
-	public void testAnnotated() throws Exception {
+	public void testAnnotatedAlias() throws Exception {
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
 		ctx.load("classpath:spring-cdi/app-context-annotated.xml");
 		ctx.refresh();

@@ -2,10 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="provider" class="pei.spring.lab.cdi.basics.HelloMessageProvider"/>
-    <bean id="renderer" class="pei.spring.lab.cdi.basics.StdOutMessageRenderer"
-        p:messageProvider-ref="provider"/>
+    <bean id="renderer" class="pei.spring.lab.cdi.common.StdOutMessageRenderer"
+        p:messageProvider-ref="provider1"/>
+        
+    <bean id="provider1" class="pei.spring.lab.cdi.common.HelloMessageProvider"/>
+    <bean id="provider2" 
+        class="pei.spring.lab.cdi.constructorInjection.XmlConfiguredMessageProvider"
+        c:message="XML configured constructor injection!"/>
+
+    <bean id="xmlSomeService" class="pei.spring.lab.cdi.constructorInjection.XmlSomeService">
+        <constructor-arg type="int"><value>100</value></constructor-arg> 
+    </bean>
 </beans>
