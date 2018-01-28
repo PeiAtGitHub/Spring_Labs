@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import static pei.spring.lab.cdi.utils.Utils.*;
 
 
 public class BeanAliasDemo {
@@ -33,29 +34,28 @@ public class BeanAliasDemo {
 
 	@Test
 	public void testXmlConfigAlias() throws Exception {
-		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-		ctx.load("classpath:spring-cdi/app-context-alias.xml");
-		ctx.refresh();
-		ctx.getBeansOfType(String.class).entrySet().stream().forEach(new idAliasPrinter(ctx));
-		
-		assertSame((String) ctx.getBean("mike"), (String) ctx.getBean("michael"));
-		ctx.close();
+		try(GenericXmlApplicationContext ctx = new GenericXmlApplicationContext()){
+			ctx.load("classpath:spring-cdi/app-context-alias.xml");
+			ctx.refresh();
+			ctx.getBeansOfType(String.class).entrySet().stream().forEach(new idAliasPrinter(ctx));
+			assertSame((String) ctx.getBean("mike"), (String) ctx.getBean("michael"));
+		}
 	}
 	
 	@Test
 	public void testAnnotatedAlias() throws Exception {
-		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-		ctx.load("classpath:spring-cdi/app-context-annotated.xml");
-		ctx.refresh();
-		ctx.getBeansOfType(Singer.class).entrySet().stream().forEach(new idAliasPrinter(ctx));
-		ctx.close();
+		try(GenericXmlApplicationContext ctx = new GenericXmlApplicationContext()){
+			ctx.load("classpath:" + APP_CTX_ANNO);
+			ctx.refresh();
+			ctx.getBeansOfType(Singer.class).entrySet().stream().forEach(new idAliasPrinter(ctx));
+		}
 	}
 	
 	@Test
 	public void testAnnoConfig() throws Exception {
-		GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AliasBeanConfig.class);
-		ctx.getBeansOfType(Singer.class).entrySet().stream().forEach(new idAliasPrinter(ctx));
-		ctx.close();
+		try(GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AliasBeanConfig.class)){
+			ctx.getBeansOfType(Singer.class).entrySet().stream().forEach(new idAliasPrinter(ctx));
+		}
 	}
 	
 	
