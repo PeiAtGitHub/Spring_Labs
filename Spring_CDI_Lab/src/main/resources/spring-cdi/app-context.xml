@@ -17,4 +17,23 @@
     <bean id="xmlSomeService" class="pei.spring.lab.cdi.constructorInjection.XmlSomeService">
         <constructor-arg type="int"><value>100</value></constructor-arg> 
     </bean>
+    
+    
+    <!-- autowire -->
+    <bean id="bar" class="pei.spring.lab.cdi.autowire.Bar"/>
+    
+    <bean id="foo1" class="pei.spring.lab.cdi.autowire.FooImpl1" />
+    <bean id="foo2" class="pei.spring.lab.cdi.autowire.FooImpl2" primary="true"/>
+    <bean id="foo3" class="pei.spring.lab.cdi.autowire.FooImpl3" />
+    
+    
+    <bean id="target2ByName" autowire="byName" class="pei.spring.lab.cdi.autowire.Target2"
+        lazy-init="true"/>
+
+    <bean id="target2ByType" autowire="byType" class="pei.spring.lab.cdi.autowire.Target2"
+        lazy-init="true"/>
+
+    <bean id="target2Constructor" autowire="constructor" class="pei.spring.lab.cdi.autowire.Target2" 
+    	lazy-init="true"/>
+    
 </beans>

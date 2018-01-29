@@ -11,6 +11,7 @@
 
     <context:component-scan base-package="pei.spring.lab.cdi.alias"/>
     <context:component-scan base-package="pei.spring.lab.cdi.constructorInjection"/>
+    <context:component-scan base-package="pei.spring.lab.cdi.autowire"/>
     
 	<bean id="message" class="java.lang.String" c:_0="Constructor Injected Value."/>
     

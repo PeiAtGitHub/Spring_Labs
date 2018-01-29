@@ -67,8 +67,7 @@ public class BeanAliasDemo {
 		}
 	}
 
-	@Component("bird")
-	@Getter @Setter
+	@Component("bird") @Getter @Setter
 	static class Singer {
 		String name = "";
 	}
